@@ -30,8 +30,47 @@ function makeBirdFly(bird) {
   bird.fly();
 }
 
-const chicken = new Chicken();
-const penguin = new Penguin();
+// const chicken = new Chicken();
+// const penguin = new Penguin();
 
-makeBirdFly(chicken);
-makeBirdFly(penguin);
+// makeBirdFly(chicken);
+// makeBirdFly(penguin);
+
+/////////////////////////////
+////////////GOOD EXAMPLE////////////
+/////////////////////////////
+// 1️⃣ BASE CLASS
+class FlyBird {
+  fly() {
+    console.log('I can FLY!');
+  }
+}
+
+class SwimBird {
+  swim() {
+    console.log('I can SWIM');
+  }
+}
+
+// 2️⃣ SUBCLASS
+class Chicken extends FlyBird {
+  chip() {
+    console.log('I can CHIP!');
+  }
+}
+
+class Penguin extends SwimBird {}
+
+function makeBirdFly(bird) {
+  bird.fly();
+}
+
+function makeBirdSwim(bird) {
+  bird.swim();
+}
+
+// const penguin = new Penguin();
+// const chicken = new Chicken();
+
+// makeBirdFly(chicken);
+// makeBirdSwim(penguin);
