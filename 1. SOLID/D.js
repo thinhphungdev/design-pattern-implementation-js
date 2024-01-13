@@ -32,9 +32,50 @@ class Paypal {
 }
 
 class Stripe {
-  constructor() {}
-
   processPayment(user, amountInDollars) {
     console.log(`${user} made payment of ${amountInDollars} with Stripe!`);
   }
 }
+//////////////////////////////////////
+// GOOD EXAMPLE
+//////////////////////////////////////
+
+class GoodEcomStore {
+  constructor(paymentProcessor) {
+    this.paymentProcessor = paymentProcessor;
+  }
+
+  buyCar(quantity) {
+    this.paymentProcessor.pay(quantity);
+  }
+
+  buyAirplaneTicket(quantity) {
+    this.paymentProcessor.pay(quantity);
+  }
+}
+
+class StripePaymentProcessor {
+  constructor(user) {
+    this.user = user;
+    this.stripe = new Stripe();
+  }
+
+  pay(amountInDollars) {
+    this.stripe.processPayment(this.user, amountInDollars);
+  }
+}
+
+class PayPalPaymentProcessor {
+  constructor(user) {
+    this.paypal = new Paypal(user);
+  }
+
+  pay(amountInCents) {
+    this.paypal.processPayment(amountInCents);
+  }
+}
+
+// const store = new GoodEcomStore(new PayPalPaymentProcessor('Hihi'));
+const store = new GoodEcomStore(new StripePaymentProcessor('333'));
+store.buyCar(2);
+store.buyAirplaneTicket(3);
