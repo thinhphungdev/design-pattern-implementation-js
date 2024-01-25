@@ -67,3 +67,39 @@ personObj.scores.a = 30;
 console.log(personObj); // {name: 'John', age: 20, scores: {a : 30, b: 2}}
 
 // => Ojbect.freeze is still just a SHALLOW freeze
+
+////////////////////////////////////////
+////////////////////////////////////////
+// DEEP COPY
+////////////////////////////////////////
+
+// One line quick Vanilla JS solution to deep copy an object, but it does not work with Dates
+// functions, undefined, Infinity, RegExps, Blobs, Sets, Maps
+
+// Here we turned the object into string and turn it back using json parse
+// But json stringify loose the type listed above
+// It's a problem if you try to send it throw an API or store it into localStorage.
+const newScoreObj = JSON.parse(JSON.stringify(personObj));
+console.log(newScoreObj === personObj); //
+
+newScoreObj.name = 'Howard';
+console.log(newScoreObj); // {name: 'Howard', age: 20, scores: {a : 30, b: 2}}
+
+console.log(personObj); // {name: 'John', ....}
+
+/// DEEP CLONE FUNCTION instead of using a lib
+function deepClone(obj) {
+  if (typeof obj !== 'object' || obj === null) return obj;
+
+  // Create an array or object to hold the values;
+  const newObject = Array.isArray(obj) ? [] : {};
+
+  for (let key in obj) {
+    const value = obj[key];
+
+    // recursive call for nested objects & arrrays;
+    newObject[key] = deepClone(value);
+  }
+
+  return newObject;
+}
