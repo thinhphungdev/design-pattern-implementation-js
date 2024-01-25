@@ -103,3 +103,13 @@ function deepClone(obj) {
 
   return newObject;
 }
+
+const scoreArray = [3, 4, 5, 6];
+const newScoreArray = deepClone(scoreArray);
+console.log(newScoreArray === scoreArray); // false
+
+function pureScore(array, score, cloneFn) {
+  const newArray = cloneFn(array);
+  newArray.push(score);
+  return newArray;
+}
