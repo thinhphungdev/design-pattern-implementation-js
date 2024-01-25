@@ -75,7 +75,7 @@ class PayPalPaymentProcessor {
   }
 }
 
-// const store = new GoodEcomStore(new PayPalPaymentProcessor('Hihi'));
-const store = new GoodEcomStore(new StripePaymentProcessor('333'));
+// const store = new GoodEcomStore(new PayPalPaymentProcessor('Jay'));
+const store = new GoodEcomStore(new StripePaymentProcessor('Jax'));
 store.buyCar(2);
 store.buyAirplaneTicket(3);
