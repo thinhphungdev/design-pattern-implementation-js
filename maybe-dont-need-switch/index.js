@@ -18,8 +18,8 @@ function getUserRole1(role) {
   }
 }
 
-getUserRole(); // 'Please provide valid user role'
-getUserRole('admin'); // "This User is Admin!
+getUserRole1(); // 'Please provide valid user role'
+getUserRole1('admin'); // "This User is Admin!
 
 // BAD with IF ELSE
 function getUserRoleWithIfElse(role) {
@@ -40,7 +40,7 @@ function getUserRoleWithIfElse(role) {
 }
 
 // with Object literals
-function getUserRole(role) {
+function getUserRole2(role) {
   const UserRoles = {
     admin: 'This User is an Admin!',
     client: 'This User is a Client!',
@@ -52,4 +52,20 @@ function getUserRole(role) {
   return UserRoles[role] || UserRoles.default;
 }
 
-console.log(getUserRole('broker'));
+// console.log(getUserRole('broker'));
+
+// with ES6 Map
+const userRolesMap = new Map([
+  ['admin', 'This User is an Admin!'],
+  ['client', 'This User is an Client!'],
+  ['broker', 'This User is an Broker!'],
+  ['developer', 'This User is an developer!'],
+]);
+
+function getUserRole3(role) {
+  const userRole = userRolesMap.get(role);
+
+  return userRole || 'Please provide a valid user role';
+}
+console.log(getUserRole3('broker'));
+console.log(getUserRole3());
