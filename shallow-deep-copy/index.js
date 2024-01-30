@@ -80,7 +80,7 @@ console.log(personObj); // {name: 'John', age: 20, scores: {a : 30, b: 2}}
 // But json stringify loose the type listed above
 // It's a problem if you try to send it throw an API or store it into localStorage.
 const newScoreObj = JSON.parse(JSON.stringify(personObj));
-console.log(newScoreObj === personObj); //
+console.log(newScoreObj === personObj); // false
 
 newScoreObj.name = 'Howard';
 console.log(newScoreObj); // {name: 'Howard', age: 20, scores: {a : 30, b: 2}}
