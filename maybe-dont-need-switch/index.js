@@ -1,3 +1,4 @@
+// BAD
 function getUserRole(role) {
   switch (role) {
     case 'admin':
@@ -19,3 +20,21 @@ function getUserRole(role) {
 
 getUserRole(); // 'Please provide valid user role'
 getUserRole('admin'); // "This User is Admin!
+
+// BAD with IF ELSE
+function getUserRoleWithIfElse(role) {
+  let userRole;
+  if (role === 'admin') {
+    userRole = 'This User is an Admin!';
+  } else if (role === 'client') {
+    userRole = 'This User is a Client!';
+  } else if (role === 'broker') {
+    userRole = 'This User is a Broker!';
+  } else if (role === 'developer') {
+    userRole = 'This User is a Broker!';
+  } else {
+    userRole = 'Please provide valid user role';
+  }
+
+  return `User is role: ${userRole}`;
+}
