@@ -1,5 +1,5 @@
 // BAD
-function getUserRole(role) {
+function getUserRole1(role) {
   switch (role) {
     case 'admin':
       return 'This User is an Admin!';
@@ -36,5 +36,20 @@ function getUserRoleWithIfElse(role) {
     userRole = 'Please provide valid user role';
   }
 
-  return `User is role: ${userRole}`;
+  return `${userRole}`;
 }
+
+// with Object literals
+function getUserRole(role) {
+  const UserRoles = {
+    admin: 'This User is an Admin!',
+    client: 'This User is a Client!',
+    broker: 'This User is a Broker!',
+    developer: 'This User is a Developer',
+    default: 'Please provide a valid user role',
+  };
+
+  return UserRoles[role] || UserRoles.default;
+}
+
+console.log(getUserRole('broker'));
